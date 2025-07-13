@@ -9,6 +9,7 @@ import (
 	"context"
 	"github.com/google/uuid"
 	"github.com/TJ-R/gamelog-backend/internal/auth"
+	"github.com/TJ-R/gamelog-backend/internal/util/restutil"
 )
 
 type User struct {
@@ -32,14 +33,14 @@ func (h *handler) createUser(w http.ResponseWriter, r *http.Request) {
 	err := decoder.Decode(&newUserReq)
 	if err != nil {
 		log.Println(err)
-		respondWithError(w, "Error when decoding", http.StatusInternalServerError)
+		http.Error(w, "Error when decoding", http.StatusInternalServerError)
 		return 
 	}
 
 	hashedPassword, err := auth.HashPassword(newUserReq.Password)
 	if err != nil {
 		log.Println(err)
-		responsdWithError(w, "Error when hashing password", http.StatusInternalServerError)
+		http.Error(w, "Error when hashing password", http.StatusInternalServerError)
 		return
 	}
 
@@ -49,7 +50,7 @@ func (h *handler) createUser(w http.ResponseWriter, r *http.Request) {
 	})
 	if err != nil {
 		log.Println(err)
-		respondWithError(w, "Error when creating user", http.StatusInternalServerError)
+		http.Error(w, "Error when creating user", http.StatusInternalServerError)
 		return
 	}
 
@@ -60,5 +61,5 @@ func (h *handler) createUser(w http.ResponseWriter, r *http.Request) {
 		Email: user.Email,
 	}
 
-	respondWithJson(w, newUser, http.StatusOK)
+	restutil.RespondWithJSON(w, http.StatusOK, newUser)
 }

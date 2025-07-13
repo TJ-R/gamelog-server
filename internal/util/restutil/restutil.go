@@ -11,7 +11,7 @@ type ErrorResponse struct {
 	Code    int    `json:"code"`
 }
 
-func respondWithJSON (w http.ResponseWriter, code int, payload any) {
+func RespondWithJSON (w http.ResponseWriter, code int, payload any) {
 	dat, err := json.Marshal(payload)
 	if err != nil {
 		log.Println("Error: Encountered an error when marshalling json")

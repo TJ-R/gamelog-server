@@ -3,6 +3,7 @@ package main
 import (
 	"database/sql"
 	"github.com/TJ-R/gamelog-backend/internal/create"
+	"github.com/TJ-R/gamelog-backend/internal/admin"
 	"github.com/TJ-R/gamelog-backend/internal/database"
 	"log"
 	"net/http"
@@ -28,6 +29,9 @@ func main() {
 
 	createHandler := create.NewHandler(dbQueries, os.Getenv("PLATFORM"), os.Getenv("SECRET"))
 	createHandler.RegisterRoutes(mux)
+
+	adminHandler := admin.NewHandler(dbQueries, os.Getenv("PLATFORM"), os.Getenv("SECRET"))
+	adminHandler.RegisterRoutes(mux)
 
 	server := http.Server {
 		Handler: mux,
