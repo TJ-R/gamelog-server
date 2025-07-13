@@ -1,21 +1,21 @@
 package create
 
 import (
-	"gamelog-backend-api/internal/database"
+	"github.com/TJ-R/gamelog-backend/internal/database"
 	"net/http"
 )
 
 type handler struct {
 	dbQueries *database.Queries
-	platform string
-	secret string
+	platform  string
+	secret    string
 }
 
 func NewHandler(dbQueries *database.Queries, platform, secret string) *handler {
 	return &handler{
 		dbQueries: dbQueries,
-		platform: platform,
-		secret: secret,
+		platform:  platform,
+		secret:    secret,
 	}
 }
 

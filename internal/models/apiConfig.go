@@ -1,7 +1,7 @@
 package models
 
 import (
-	"gamelog-backend-api/internal/database"
+	"github.com/TJ-R/gamelog-backend/internal/database"
 )
 
 type ApiConfig struct {

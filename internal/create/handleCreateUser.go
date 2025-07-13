@@ -2,12 +2,13 @@ package create
 
 import (
 	"encoding/json"
-	"gamelog-backend-api/internal/database"
+	"github.com/TJ-R/gamelog-backend/internal/database"
 	"log"
 	"net/http"
 	"time"
 	"context"
 	"github.com/google/uuid"
+	"github.com/TJ-R/gamelog-backend/internal/auth"
 )
 
 type User struct {

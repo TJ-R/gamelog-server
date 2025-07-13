@@ -2,8 +2,8 @@ package main
 
 import (
 	"database/sql"
-	"gamelog-backend-api/internal/create"
-	"gamelog-backend-api/internal/database"
+	"github.com/TJ-R/gamelog-backend/internal/create"
+	"github.com/TJ-R/gamelog-backend/internal/database"
 	"log"
 	"net/http"
 	"os"
