@@ -1,4 +1,4 @@
-module github.com/TJ-R/gamelog-backend
+module github.com/TJ-R/gamelog-server
 
 go 1.24.1
 
