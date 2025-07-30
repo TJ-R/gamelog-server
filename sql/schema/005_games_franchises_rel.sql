@@ -2,8 +2,9 @@
 CREATE TABLE franchises_games_rel (
     franchise_id INTEGER NOT NULL REFERENCES franchises(id) ON DELETE CASCADE,
     games_id INTEGER NOT NULL REFERENCES games(id) ON DELETE CASCADE,
-    create_at TIMESTAMP NOT NULL,
-    update_at TIMESTAMP NOT NULL
+    PRIMARY KEY (franchise_id, games_id), -- Composite Primary Key
+    created_at TIMESTAMP NOT NULL,
+    updated_at TIMESTAMP NOT NULL
 );
 
 -- +goose Down

@@ -1,12 +1,10 @@
 -- +goose Up
-CREATE TABLE franchises (
+CREATE TABLE platform_type (
     id INTEGER PRIMARY KEY,
     created_at TIMESTAMP NOT NULL,
     updated_at TIMESTAMP NOT NULL,
-    name TEXT NOT NULL,
-    slug TEXT NOT NULL,
-    url TEXT
+    name TEXT NOT NULL
 );
 
 -- +goose Down
-DROP TABLE franchises;
+DROP TABLE platform_type;
