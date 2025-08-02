@@ -23,6 +23,9 @@ func main() {
 		       our datebase to use.`,
 		Run: func(cmd *cobra.Command, args []string) {
 			fmt.Println("Do Something")
+
+			// Start the process of pulling all of the relevant IGDB data into database
+			// here the function to do it will be in the internal package somewhere
 		},
 	}
 

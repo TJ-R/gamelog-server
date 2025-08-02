@@ -5,10 +5,152 @@
 package database
 
 import (
+	"database/sql"
 	"time"
 
 	"github.com/google/uuid"
 )
+
+type AlternativeName struct {
+	ID        int32
+	CreatedAt time.Time
+	UpdatedAt time.Time
+	Comment   string
+	Game      int32
+	Name      string
+}
+
+type Franchise struct {
+	ID        int32
+	CreatedAt time.Time
+	UpdatedAt time.Time
+	Name      string
+	Slug      string
+	Url       sql.NullString
+}
+
+type FranchisesGamesRel struct {
+	FranchiseID int32
+	GamesID     int32
+	CreatedAt   time.Time
+	UpdatedAt   time.Time
+}
+
+type Game struct {
+	ID               int32
+	CreatedAt        time.Time
+	UpdatedAt        time.Time
+	FirstReleaseDate sql.NullInt64
+	Name             string
+	ParentGame       sql.NullInt32
+	Slug             sql.NullString
+	Storyline        sql.NullString
+	Summary          sql.NullString
+	Url              sql.NullString
+	VersionParent    sql.NullInt32
+	VersionTitle     sql.NullString
+}
+
+type GameDlcRel struct {
+	GameID    int32
+	DlcID     int32
+	CreatedAt time.Time
+	UpdatedAt time.Time
+}
+
+type GameExpansionRel struct {
+	GameID      int32
+	ExpansionID int32
+	CreatedAt   time.Time
+	UpdatedAt   time.Time
+}
+
+type GameGenreRel struct {
+	GameID    int32
+	GenreID   int32
+	CreatedAt time.Time
+	UpdatedAt time.Time
+}
+
+type GameRemakeRel struct {
+	GameID    int32
+	RemakeID  int32
+	CreatedAt time.Time
+	UpdatedAt time.Time
+}
+
+type GameRemasterRel struct {
+	GameID     int32
+	RemasterID int32
+	CreatedAt  time.Time
+	UpdatedAt  time.Time
+}
+
+type GameType struct {
+	ID        int32
+	CreatedAt time.Time
+	UpdatedAt time.Time
+	Type      string
+}
+
+type GamesAlternativeNamesRel struct {
+	GameID            int32
+	AlternativeNameID int32
+	CreatedAt         time.Time
+	UpdatedAt         time.Time
+}
+
+type Genre struct {
+	ID        int32
+	CreatedAt time.Time
+	UpdatedAt time.Time
+	Name      string
+	Slug      sql.NullString
+	Url       sql.NullString
+}
+
+type Platform struct {
+	ID           int32
+	CreatedAt    time.Time
+	UpdatedAt    time.Time
+	Abbreviation sql.NullString
+	Generation   sql.NullInt32
+	Name         string
+	Slug         sql.NullString
+	Summary      sql.NullString
+	Url          sql.NullString
+}
+
+type PlatformFamily struct {
+	ID        int32
+	CreatedAt time.Time
+	UpdatedAt time.Time
+	Name      string
+	Slug      sql.NullString
+}
+
+type PlatformType struct {
+	ID        int32
+	CreatedAt time.Time
+	UpdatedAt time.Time
+	Name      string
+}
+
+type PlatformsPlatformFamilyRel struct {
+	PlatformID       int32
+	PlatformFamilyID int32
+	CreatedAt        time.Time
+	UpdatedAt        time.Time
+}
+
+type Theme struct {
+	ID        int32
+	CreatedAt time.Time
+	UpdatedAt time.Time
+	Name      string
+	Slug      sql.NullString
+	Url       sql.NullString
+}
 
 type User struct {
 	ID             uuid.UUID
